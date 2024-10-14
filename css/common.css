@@ -1,0 +1,319 @@
+@charset "UTF-8";
+
+/*  ベース、header、max-width、section-title、footerのCSS */
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: "Kiwi Maru", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+}
+.bg {
+  background: #f8f7f3;
+}
+
+/* header */
+
+/* pc-header */
+.pc-header {
+  position: fixed;
+  z-index: 100;
+  background: transparent;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 85px;
+}
+.pc-menu-list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: transparent;
+}
+.pc-menu-list li {
+  padding: 20px 36px;
+}
+.pc-menu-list a {
+  color: #5f849c;
+  font-family: 'Afacad', sans-serif;
+  font-size: 2rem;
+  position: relative;
+}
+.pc-menu-list a::after {
+  content: url(../img/hover-stanp.png);
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 2px;
+  scale: 0.1;
+  opacity: 0;
+  transition: all .5s;
+}
+.pc-menu-list a:hover::after {
+  opacity: 1;
+}
+
+/* sp-header */
+.sp-header {
+  display: none;
+}
+
+/*nav-area最初は非表示*/
+.nav-area {
+  display: block;
+  position: fixed;
+  top: 0;/*カスタム*/
+  left: -300px; /*widthと同じサイズで非表示*/
+  bottom: 0;/*カスタム*/
+  width: 300px; /*nav-areaの幅*/
+  background: #f8f7f3;
+  transition: all .5s;/*表示スピード*/
+  z-index: 100;
+  opacity: 0;
+}
+.nav-area a {
+  display: block;
+  color: #5f849c;
+  font-family: 'Afacad', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  padding: 20px;
+}
+
+/*nav-area表示時*/
+.open.nav-area {
+  left: 0;/*left-300からleft0でnav-area表示*/
+  opacity: 1;
+}
+
+/*nav-button*/
+.nav-btn {
+  display: block;
+  position: fixed;
+  top: 25px;/*カスタム*/
+  right: 25px;/*カスタム*/
+  width: 30px;
+  height: 30px;
+  transition: all .5s;
+  cursor: pointer;
+  z-index: 90;
+  mix-blend-mode: difference;
+}
+.nav-btn i{
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: #fff;
+  border-radius: 4px;
+  transition: all .5s;
+}
+.nav-btn i:nth-child(1) {
+  top:4px;
+}
+.nav-btn i:nth-child(2) {
+  top: 14px;
+}
+.nav-btn i:nth-child(3) {
+  bottom: 4px;
+}
+
+/*nav-area表示時*/
+.open.nav-btn i:nth-child(1) {
+  transform: translateY(10px) rotate(-45deg);/*回転アニメは-315deg*/
+}
+.open.nav-btn i:nth-child(2) {
+  opacity: 0;
+}
+.open.nav-btn i:nth-child(3) {
+  transform: translateY(-10px) rotate(45deg);/*回転アニメは315deg*/
+}
+
+/*mask*/
+.mask {
+  display: none;
+  transition: all .5s;
+}
+.open.mask {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: gray;
+  opacity: .8;
+  z-index: 80;
+  cursor: pointer;
+}
+/* max-width */
+
+.wrap1200 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* section-title */
+
+.section-title h2 {
+  font-family: 'Afacad', sans-serif;
+  padding-top: 85px;
+  margin-top: -85px;
+  margin: 160px 0 100px 0;
+  font-size: 3rem;
+  color: #5f849c;
+  position: relative;
+  margin-left: 20px;
+  padding-left: 70px;
+}
+.section-title h2::before,
+.section-title h2::after {
+  content: "●";
+  display: inline-block;
+  position: absolute;
+}
+.section-title h2::before {
+  color: #5f849c;
+  left: 0px;
+}
+.section-title h2::after {
+  color: #dae4eb;
+  left: 15px;
+  top: 70px;
+}
+
+/* footer */
+
+footer .f-slider img {
+  height: 300px;
+}
+
+footer .f-bg {
+  background: #5f849c ;
+  color: #fefefe;
+}
+.f-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 120px 0 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.f-wrap a {
+  color: #fefefe;
+  font-family: 'Afacad', sans-serif;
+  font-size: 1.5rem;
+  padding-left: 5px;
+}
+.f-left,
+.f-center,
+.f-right {
+  width: calc(100% / 3);
+}
+.f-left {
+  margin-left: 20px;
+}
+.f-title {
+  margin: 0 0 20px 0;
+}
+.f-title h1 {
+  font-family: 'Afacad', sans-serif;
+}
+.f-left .tel,
+.f-left .address {
+  margin-bottom: 12px;
+}
+.f-left table {
+  border-collapse: collapse;
+}
+.f-left table th,
+.f-left table td {
+  border: solid 1px #fefefe;
+  padding: 5px 10px;
+}
+.f-wrap li {
+  padding: 20px;
+}
+.f-wrap li::before {
+  display: inline-block;
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #fefefe;
+}
+.f-center,
+.f-right {
+  border-left: solid 1px #fefefe;
+  padding-left: 20px;
+}
+.sns-icon {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 120px;
+}
+.sns-icon img {
+  width: 40px;
+  margin: 20px 40px;
+}
+
+@media (max-width: 950px) {
+
+  footer .f-slider img {
+    height: 300px;
+  }  
+  .f-wrap {
+    flex-wrap: wrap;
+  }
+  .f-left {
+    width: 100%;
+    margin-bottom: 100px;
+  }
+  .f-center,
+  .f-right {
+    width: 50%;
+  }
+  .f-center {
+    border: none;
+  }
+}
+@media (max-width: 768px) {
+
+  .pc-header {
+    display: none;
+  }
+  .sp-header {
+    display: block;
+  }
+  .section-title h3 {
+    font-size: 2rem;
+    padding-left: 50px;
+  }
+  .section-title h3::after {
+    left: 10px;
+  }
+  .f-wrap li {
+    padding: 12px;
+  }
+  .f-wrap a {
+    font-family: 'Afacad', sans-serif;
+    font-size: 1.5rem;
+  }
+  .f-right {
+    border: none;
+  }
+}
